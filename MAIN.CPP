@@ -72,7 +72,7 @@ void clearWater(void)
         field[x][0] = 99;
         field[x][199] = 99;
     }
-    for (y = 0; y < 200; y++)
+    for (int y = 0; y < 200; y++)
     {
         field[0][y] = 99;
         field[319][y] = 99;
@@ -248,7 +248,7 @@ void drawBar()
     button[1]->tag = 0;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 1;
         }
@@ -278,7 +278,7 @@ void drawBar()
     button[2]->tag = 0;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 0;
         }
@@ -311,7 +311,7 @@ void drawBar()
     button[3]->tag = 0;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 1;
         }
@@ -333,7 +333,7 @@ void drawBar()
     button[4]->isDown = 1;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 0;
         }
@@ -373,7 +373,7 @@ void drawBar()
     button[5]->tag = 0;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 0;
         }
@@ -409,7 +409,7 @@ void drawBar()
     button[6]->tag = 11;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 0;
         }
@@ -441,7 +441,7 @@ void drawBar()
     button[7]->tag = 10;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 0;
         }
@@ -470,14 +470,14 @@ void drawBar()
     button[8]->tag = 12;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 16;
         }
     }
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 7; y++)
+        for (int y = 0; y < 7; y++)
         {
             i[x][y] = 15 * random(2);
         }
@@ -494,14 +494,14 @@ void drawBar()
     button[9]->tag = 13;
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 16; y++)
+        for (int y = 0; y < 16; y++)
         {
             i[x][y] = 16;
         }
     }
     for (x = 0; x < 16; x++)
     {
-        for (y = 0; y < 7; y++)
+        for (int y = 0; y < 7; y++)
         {
             i[x][y] = 1 * random(2);
         }
@@ -525,7 +525,7 @@ void n(void)
         field[x][0] = 99;
         field[x][199] = 99;
     }
-    for (y = 0; y < 200; y++)
+    for (int y = 0; y < 200; y++)
     {
         field[0][y] = 99;
         field[299][y] = 99;
@@ -734,8 +734,7 @@ void putpixel(int x, int y, char c)
     offs = x + y * 320;
     static unsigned char    d;
     d = c;
-    asm
-    {
+    asm {
         mov ax,0xA000
         mov es,ax
         mov bx,offs
@@ -829,8 +828,7 @@ void render(void)
 
 void gr(void)
 {
-    asm
-    {
+    asm {
         mov ax,0x13;
         int 0x10;
     }
@@ -840,8 +838,7 @@ void gr(void)
 
 void tx(void)
 {
-    asm
-    {
+    asm {
         mov ax,0x3;
         int 0x10;
     }
@@ -1015,7 +1012,7 @@ void water(void)
             int k   = 2;
             for (x = 318; x > 0; x--)
             {
-                for (y = 198; y >= 1; y--)
+                for (int y = 198; y >= 1; y--)
                 {
                     if ((field[x][y] > 0) && (field[x][y] < 99))
                     {
